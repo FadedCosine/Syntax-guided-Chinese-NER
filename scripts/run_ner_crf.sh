@@ -1,5 +1,5 @@
 CURRENT_DIR=`pwd`
-export BERT_BASE_DIR=./prev_trained_model　
+export BERT_BASE_DIR=$CURRENT_DIR/prev_trained_model/bert-base
 export CLUE_DIR=$CURRENT_DIR/datasets
 export OUTPUR_DIR=$CURRENT_DIR/outputs
 TASK_NAME="cluener"
@@ -19,7 +19,7 @@ python run_ner_crf.py \
   --per_gpu_eval_batch_size=32 \
   --learning_rate=3e-5 \
   --crf_learning_rate=1e-3 \
-  --num_train_epochs=4.0 \
+  --num_train_epochs=10.0 \
   --logging_steps=84 \
   --save_steps=84 \
   --output_dir=$OUTPUR_DIR/${TASK_NAME}_output/ \
