@@ -33,13 +33,16 @@ BERT等预训练模型虽然能够极大程度地提取出文本上下文信息�
 | 21 | 。 | 获悉 | 4 |
 
 如果要构建出一棵句法依存树，可以发现该句中的命名实体都作为完整的叶子结点出现在此句法依存树当中。因此，我们希望树中的每个结点去关注以此结点作为子树的树中所有叶子结点和此结点本身，这种Attention的机制既从句法中获益引导模型去关注可能的命名实体（命名实体常常作为句法依存树的叶子结点），又能使得模型获取Lattice的信息（句法依存分析的过程中就进行了分词，每个结点关注自己本身就获得了完整的Lattice信息）。具体地我们定义句法依存关注矩阵M如下：
-$$
-M =\left\{
+
+![](http://latex.codecogs.com/gif.latex?\\ M =\left\{
 \begin{aligned}
 1, & &  \text{ if j} \in \text{ Leaf(i) or j == i} \\
 0, &  & otherwise  \\
 \end{aligned}
-\right.
+\right.)
+
+$$
+
 $$
 
 定义句法引导的multi-head self-attention操作如下：
