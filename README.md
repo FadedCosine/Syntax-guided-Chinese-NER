@@ -103,6 +103,6 @@ model_type目前支持**bert**和**albert**
 
 ### 结果
 
-Syntax-Guide roberta_wwm_large在test上为F1分数为0.80061 (见官方评测网站 https://www.cluebenchmarks.com/ner.html)，当前目录下的cluener.zip文件即为最终测试集的结果。
+Syntax-Guide roberta_wwm_large在test上为F1分数为0.80061 (见官方评测网站 https://www.cluebenchmarks.com/ner.html )，当前目录下的cluener.zip文件即为最终测试集的结果。
 
 > 代码改进基于 https://github.com/CLUEbenchmark/CLUENER2020 
