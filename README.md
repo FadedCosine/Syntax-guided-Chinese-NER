@@ -54,6 +54,17 @@ $$
 H_i = A_i V_i
 $$
 
+以上工作主要的代码在于
+```text
+├── models
+|  └── bert_for_ner.py # 依据上述思想实现了BertCrfForNerWithSyn模型
+├── processors　
+|  ├──  dependency_parsing.py # 使用pyhanlp提取句法信息，实现构建句法依存树的函数
+|  ├──  ner_seq.py # 把句法依存树信息传入CnerProcessor当中，并修改convert_examples_to_features函数，构建句法attention矩阵特征
+|  ├──  utils_ner.py # 改动_read_json函数，利用dependency_parsing.py中的函数提取句法信息
+|  └── pytorch_model.bin
+```
+
 ### 数据介绍
 
 数据详细描述: https://www.cluebenchmarks.com/introduce.html
@@ -79,7 +90,10 @@ sh scripts/run_ner_crf.sh
 ```
 4. 预测
 
-当前默认使用最后一个checkpoint模型作为预测模型，可通过--from_checkpoint指定checkpoint进行预测，或指定--from_all_checkpoints将依次load所有checkpoints进行预测。
+当前默认使用最后一个checkpoint模型作为预测模型，可通过修改scripts/run_ner_crf_for_predict.sh中的参数，使用--from_checkpoint指定checkpoint路径进行预测，或指定--from_all_checkpoints将依次load所有checkpoints进行预测。而后直接执行对应shell脚本，如：
+```shell
+sh scripts/run_ner_crf_for_predict.sh
+```
 
 ### 模型列表
 
@@ -89,6 +103,6 @@ model_type目前支持**bert**和**albert**
 
 ### 结果
 
-bert_wwwm_ext在dev上为F1分数为0.8064
+Syntax-Guide roberta_wwm_large在test上为F1分数为0.80061，见官方评测网站 https://www.cluebenchmarks.com/ner.html
 
 > 代码改进基于 https://github.com/CLUEbenchmark/CLUENER2020 
