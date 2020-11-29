@@ -1,5 +1,5 @@
 CURRENT_DIR=`pwd`
-export BERT_BASE_DIR=./prev_trained_model/bert-base
+export BERT_BASE_DIR=./prev_trained_model/chinese_roberta_wwm_large
 export CLUE_DIR=./datasets
 export OUTPUR_DIR=./outputs
 TASK_NAME="cluener"
@@ -25,3 +25,5 @@ python run_ner_crf.py \
   --output_dir=$OUTPUR_DIR/${TASK_NAME}_output/ \
   --overwrite_output_dir \
   --seed=42
+
+ 

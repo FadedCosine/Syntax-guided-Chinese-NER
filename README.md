@@ -61,8 +61,7 @@ $$
 ├── processors　
 |  ├──  dependency_parsing.py # 使用pyhanlp提取句法信息，实现构建句法依存树的函数
 |  ├──  ner_seq.py # 把句法依存树信息传入CnerProcessor当中，并修改convert_examples_to_features函数，构建句法attention矩阵特征
-|  ├──  utils_ner.py # 改动_read_json函数，利用dependency_parsing.py中的函数提取句法信息
-|  └── pytorch_model.bin
+|  └──  utils_ner.py # 改动_read_json函数，利用dependency_parsing.py中的函数提取句法信息
 ```
 
 ### 数据介绍
@@ -74,10 +73,10 @@ $$
 ```shell
 python tools/download_clue_data.py --data_dir=./datasets --tasks=cluener
 ```
-2. 从 https://huggingface.co/models 下载中文预训练模型，预训练模型文件格式，比如:
+2. 从 https://huggingface.co/models 下载中文预训练模型chinese_roberta_wwm_large，预训练模型文件格式，比如:
 ```text
 ├── prev_trained_model　# 预训练模型
-|  └── bert-base
+|  └── chinese_roberta_wwm_large
 |  | └── vocab.txt
 |  | └── config.json
 |  | └── pytorch_model.bin
@@ -103,6 +102,6 @@ model_type目前支持**bert**和**albert**
 
 ### 结果
 
-Syntax-Guide roberta_wwm_large在test上为F1分数为0.80061 (见官方评测网站 https://www.cluebenchmarks.com/ner.html )，当前目录下的cluener.zip文件即为最终测试集的结果。
+Syntax-Guide chinese_roberta_wwm_large在test上为F1分数为0.80061 (见官方评测网站 https://www.cluebenchmarks.com/ner.html)，当前目录下的cluener.zip文件即为最终测试集的结果。
 
 > 代码改进基于 https://github.com/CLUEbenchmark/CLUENER2020 

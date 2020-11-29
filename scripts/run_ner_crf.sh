@@ -1,5 +1,5 @@
 CURRENT_DIR=`pwd`
-export BERT_BASE_DIR=./prev_trained_model/bert-base
+export BERT_BASE_DIR=./prev_trained_model/chinese_roberta_wwm_large
 export CLUE_DIR=./datasets
 export OUTPUR_DIR=./outputs
 TASK_NAME="cluener"
